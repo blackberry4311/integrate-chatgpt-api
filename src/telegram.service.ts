@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import * as TelegramBot from 'node-telegram-bot-api';
+const TelegramBot = require('node-telegram-bot-api');
 
 @Injectable()
 export class TelegramService {
-  private bot: TelegramBot;
+  private bot: any;
 
   constructor(private readonly configService: ConfigService) {
     // Initialize the Telegram Bot API with your bot token
@@ -19,7 +19,7 @@ export class TelegramService {
     this.bot.sendMessage(chatId, message);
   }
 
-  listenForMessages(callback: (message: TelegramBot.Message) => void): void {
+  listenForMessages(callback: (message: any) => void): void {
     // Listen for incoming messages
     this.bot.on('message', callback);
   }
