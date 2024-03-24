@@ -100,6 +100,10 @@ export class AppService {
           // pass
         } else {
           this.logger.log(`Run status: ${keepRetrievingRun.status}`);
+          this.telegramService.sendMessage(
+            replyId,
+            'Thành thật xin lỗi, tôi không thể đưa ra thông tin trợ giúp trong lúc này',
+          );
           break;
         }
       }
